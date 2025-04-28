@@ -1,15 +1,29 @@
 
+import { useState, useEffect } from 'react';
 import { ArrowRight, ExternalLink, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import ProjectFilter from '@/components/ProjectFilter';
 
-const projects = [
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  categories: string[];
+  codeLink: string | null;
+  liveLink: string | null;
+}
+
+const projects: Project[] = [
   {
     id: 1,
     title: "Fawry Payday",
     description: "An HR automation platform for managing employee payroll, attendance, and benefits.",
     image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop",
     tags: ["React", "Redux", "Material UI"],
+    categories: ["Professional", "Frontend"],
     codeLink: null,
     liveLink: null,
   },
@@ -19,6 +33,7 @@ const projects = [
     description: "E-commerce site similar to Amazon with product listings, cart functionality, and user authentication.",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
     tags: ["React", "Firebase", "CSS"],
+    categories: ["Personal", "Full Stack"],
     codeLink: "#",
     liveLink: "#",
   },
@@ -28,6 +43,7 @@ const projects = [
     description: "Instagram-like photo gallery app with image uploading, filtering, and social features.",
     image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&auto=format&fit=crop",
     tags: ["React", "Firebase", "Tailwind CSS"],
+    categories: ["Personal", "Frontend"],
     codeLink: "#",
     liveLink: "#",
   },
@@ -37,6 +53,7 @@ const projects = [
     description: "Browse and register for local community meetups with location-based filtering.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
     tags: ["Next.js", "MongoDB", "Tailwind CSS"],
+    categories: ["Personal", "Full Stack"],
     codeLink: "#",
     liveLink: "#",
   },
@@ -46,6 +63,7 @@ const projects = [
     description: "Custom business solution for managing inventory and customer relationships.",
     image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop",
     tags: ["Angular", "TypeScript", "Bootstrap"],
+    categories: ["Freelance", "Frontend"],
     codeLink: null,
     liveLink: null,
   },
@@ -55,43 +73,68 @@ const projects = [
     description: "Mobile-responsive grocery shopping application with order tracking and delivery.",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
     tags: ["React Native", "Redux", "Express.js"],
+    categories: ["Freelance", "Mobile"],
     codeLink: null,
     liveLink: null,
   },
 ];
 
 const ProjectsSection = () => {
+  const [activeFilter, setActiveFilter] = useState("All");
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
+  const categories = Array.from(new Set(projects.flatMap(project => project.categories)));
+
+  useEffect(() => {
+    if (activeFilter === "All") {
+      setFilteredProjects(projects);
+    } else {
+      setFilteredProjects(projects.filter(project => 
+        project.categories.includes(activeFilter)
+      ));
+    }
+  }, [activeFilter]);
+
   return (
-    <section id="projects" className="py-20 bg-portfolio-dark relative overflow-hidden">
+    <section id="projects" className="py-20 bg-gray-50 dark:bg-portfolio-dark relative overflow-hidden">
       <div className="absolute top-1/4 left-0 w-full h-96 bg-portfolio-darkBlue/5 -skew-y-6"></div>
       <div className="section-container relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">My Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-white">My Projects</h2>
           <div className="w-20 h-1 bg-portfolio-highlight mx-auto mb-6"></div>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Here are some of the projects I've worked on. These showcase my skills in frontend development
             and my ability to create responsive, user-friendly web applications.
           </p>
         </div>
         
+        <ProjectFilter 
+          categories={categories} 
+          onFilterChange={setActiveFilter} 
+          activeFilter={activeFilter} 
+        />
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <Card key={project.id} className="project-card overflow-hidden bg-gray-900/30 backdrop-blur-sm">
+          {filteredProjects.map((project) => (
+            <Card 
+              key={project.id} 
+              className="project-card overflow-hidden bg-white dark:bg-gray-900/30 backdrop-blur-sm transform transition-all duration-300 hover:-translate-y-2"
+            >
               <div className="h-48 overflow-hidden">
                 <img 
                   src={project.image} 
                   alt={project.title}
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
                 />
               </div>
               
-              <CardHeader className="border-b border-gray-800">
-                <CardTitle className="text-white">{project.title}</CardTitle>
+              <CardHeader className="border-b border-gray-200 dark:border-gray-800">
+                <CardTitle className="text-gray-800 dark:text-white">{project.title}</CardTitle>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {project.tags.map((tag, index) => (
                     <span 
                       key={index} 
-                      className="text-xs bg-gray-800 text-portfolio-highlight px-2 py-1 rounded-full border border-gray-700"
+                      className="text-xs bg-gray-100 dark:bg-gray-800 text-portfolio-highlight px-2 py-1 rounded-full border border-gray-200 dark:border-gray-700"
                     >
                       {tag}
                     </span>
@@ -100,7 +143,7 @@ const ProjectsSection = () => {
               </CardHeader>
               
               <CardContent className="pt-4">
-                <CardDescription className="text-gray-400">
+                <CardDescription className="text-gray-600 dark:text-gray-400">
                   {project.description}
                 </CardDescription>
               </CardContent>
@@ -131,7 +174,7 @@ const ProjectsSection = () => {
                 )}
                 
                 {!project.codeLink && !project.liveLink && (
-                  <span className="text-gray-600 text-sm italic">Private Project</span>
+                  <span className="text-gray-500 dark:text-gray-600 text-sm italic">Private Project</span>
                 )}
               </CardFooter>
             </Card>
@@ -139,7 +182,7 @@ const ProjectsSection = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <Button className="bg-gray-900 hover:bg-gray-800 text-white border border-gray-700 inline-flex items-center gap-2 group">
+          <Button className="bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-700 inline-flex items-center gap-2 group">
             See More Projects <ArrowRight size={16} className="transform transition-transform group-hover:translate-x-1" />
           </Button>
         </div>

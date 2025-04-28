@@ -92,25 +92,30 @@
   }
 
   body {
-    @apply bg-portfolio-dark text-gray-200;
+    @apply bg-background text-foreground;
   }
 
+  /* Section styling */
   .section-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16;
   }
   
+  /* Project cards */
   .project-card {
-    @apply transition-all duration-300 bg-portfolio-darkBg border border-gray-800 hover:border-portfolio-highlight hover:-translate-y-2 hover:shadow-xl hover:shadow-portfolio-highlight/10;
+    @apply transition-all duration-300 bg-white border border-gray-200 dark:bg-portfolio-darkBg dark:border-gray-800 hover:border-portfolio-highlight dark:hover:border-portfolio-highlight hover:-translate-y-2 hover:shadow-xl hover:shadow-portfolio-highlight/10;
   }
   
+  /* Skill items */
   .skill-item {
-    @apply flex items-center gap-2 bg-gray-800/60 rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border border-gray-700 hover:bg-gray-800 hover:border-portfolio-highlight;
+    @apply flex items-center gap-2 bg-gray-100/60 dark:bg-gray-800/60 rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 hover:border-portfolio-highlight dark:hover:border-portfolio-highlight;
   }
 
+  /* Glass effect for cards */
   .glass-effect {
-    @apply bg-gray-900/30 backdrop-blur-lg border border-gray-800;
+    @apply bg-white/80 dark:bg-gray-900/30 backdrop-blur-lg border border-gray-200 dark:border-gray-800 rounded-lg shadow-sm;
   }
 
+  /* 3D sphere container */
   .sphere-container {
     @apply relative w-full h-[600px] flex items-center justify-center overflow-hidden;
   }
@@ -125,4 +130,100 @@
     backface-visibility: hidden;
     transform-origin: center;
   }
+
+  /* Animation for page sections */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+  .stagger-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Text gradient animation */
+  .text-gradient {
+    @apply font-bold text-transparent bg-clip-text;
+    background-image: linear-gradient(90deg, #33C3F0, #2563EB);
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
+@layer components {
+  .text-shadow {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in {
+  0% { transform: translateX(-50px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes rotate-sphere {
+  0% { transform: rotate3d(1, 1, 1, 0deg); }
+  100% { transform: rotate3d(1, 1, 1, 360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.9; }
 }

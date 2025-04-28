@@ -1,31 +1,46 @@
 
 import { useState } from 'react';
-import { Mail, Phone, Github, Linkedin } from 'lucide-react';
+import { Mail, Phone, Github, Linkedin, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
+import { 
+  Form, 
+  FormControl, 
+  FormField, 
+  FormItem, 
+  FormLabel, 
+  FormMessage 
+} from "@/components/ui/form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+
+const formSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const ContactSection = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = (data: FormValues) => {
     setIsSubmitting(true);
     
     // Simulate form submission
@@ -35,38 +50,33 @@ const ContactSection = () => {
         title: "Message sent!",
         description: "Thanks for reaching out. I'll get back to you soon.",
       });
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
+      form.reset();
     }, 1500);
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-white dark:bg-portfolio-darkBg">
       <div className="section-container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-          <div className="w-20 h-1 bg-portfolio-blue mx-auto mb-6"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">Get In Touch</h2>
+          <div className="w-20 h-1 bg-portfolio-highlight mx-auto mb-6"></div>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Have a project in mind or want to discuss a potential collaboration?
             Feel free to reach out using the contact form or through any of my social channels.
           </p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+          <div className="glass-effect dark:bg-gray-900/30 p-6 rounded-lg">
+            <h3 className="text-2xl font-bold mb-6 dark:text-white">Contact Information</h3>
             
             <div className="space-y-6">
               <div className="flex items-start">
-                <div className="bg-portfolio-softBlue p-3 rounded-full mr-4">
+                <div className="bg-portfolio-softBlue dark:bg-gray-800/80 p-3 rounded-full mr-4">
                   <Mail className="text-portfolio-blue" />
                 </div>
                 <div>
-                  <h4 className="font-medium mb-1">Email</h4>
+                  <h4 className="font-medium mb-1 dark:text-gray-200">Email</h4>
                   <a href="mailto:mostafahabib866@gmail.com" className="text-portfolio-blue hover:underline">
                     mostafahabib866@gmail.com
                   </a>
@@ -74,11 +84,11 @@ const ContactSection = () => {
               </div>
               
               <div className="flex items-start">
-                <div className="bg-portfolio-softBlue p-3 rounded-full mr-4">
+                <div className="bg-portfolio-softBlue dark:bg-gray-800/80 p-3 rounded-full mr-4">
                   <Phone className="text-portfolio-blue" />
                 </div>
                 <div>
-                  <h4 className="font-medium mb-1">Phone</h4>
+                  <h4 className="font-medium mb-1 dark:text-gray-200">Phone</h4>
                   <a href="tel:+201207300696" className="text-portfolio-blue hover:underline">
                     +201207300696
                   </a>
@@ -86,11 +96,11 @@ const ContactSection = () => {
               </div>
               
               <div className="flex items-start">
-                <div className="bg-portfolio-softBlue p-3 rounded-full mr-4">
+                <div className="bg-portfolio-softBlue dark:bg-gray-800/80 p-3 rounded-full mr-4">
                   <Github className="text-portfolio-blue" />
                 </div>
                 <div>
-                  <h4 className="font-medium mb-1">GitHub</h4>
+                  <h4 className="font-medium mb-1 dark:text-gray-200">GitHub</h4>
                   <a 
                     href="https://github.com/mostafa-habib" 
                     target="_blank" 
@@ -103,11 +113,11 @@ const ContactSection = () => {
               </div>
               
               <div className="flex items-start">
-                <div className="bg-portfolio-softBlue p-3 rounded-full mr-4">
+                <div className="bg-portfolio-softBlue dark:bg-gray-800/80 p-3 rounded-full mr-4">
                   <Linkedin className="text-portfolio-blue" />
                 </div>
                 <div>
-                  <h4 className="font-medium mb-1">LinkedIn</h4>
+                  <h4 className="font-medium mb-1 dark:text-gray-200">LinkedIn</h4>
                   <a 
                     href="https://linkedin.com/in/mostafahabibb" 
                     target="_blank" 
@@ -121,65 +131,98 @@ const ContactSection = () => {
             </div>
           </div>
           
-          <div>
-            <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+          <div className="glass-effect dark:bg-gray-900/30 p-6 rounded-lg">
+            <h3 className="text-2xl font-bold mb-6 dark:text-white">Send a Message</h3>
             
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Input 
-                  type="text"
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <FormField
+                  control={form.control}
                   name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full border-gray-300"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="dark:text-gray-300">Name</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Your Name" 
+                          {...field} 
+                          className="border-gray-300 dark:border-gray-700 dark:bg-gray-800/50"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              
-              <div>
-                <Input 
-                  type="email"
+                
+                <FormField
+                  control={form.control}
                   name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full border-gray-300"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="dark:text-gray-300">Email</FormLabel>
+                      <FormControl>
+                        <Input 
+                          type="email"
+                          placeholder="Your Email"
+                          {...field}
+                          className="border-gray-300 dark:border-gray-700 dark:bg-gray-800/50"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              
-              <div>
-                <Input 
-                  type="text"
+                
+                <FormField
+                  control={form.control}
                   name="subject"
-                  placeholder="Subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full border-gray-300"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="dark:text-gray-300">Subject</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Subject"
+                          {...field}
+                          className="border-gray-300 dark:border-gray-700 dark:bg-gray-800/50"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              
-              <div>
-                <Textarea 
+                
+                <FormField
+                  control={form.control}
                   name="message"
-                  placeholder="Your Message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  className="w-full border-gray-300 min-h-32"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="dark:text-gray-300">Message</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="Your Message"
+                          {...field}
+                          className="min-h-[120px] border-gray-300 dark:border-gray-700 dark:bg-gray-800/50"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              
-              <Button 
-                type="submit" 
-                className="w-full bg-portfolio-blue hover:bg-blue-600 text-white py-6"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </Button>
-            </form>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full bg-portfolio-highlight hover:bg-blue-600 text-white py-6 group"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Sending...' : (
+                    <>
+                      Send Message 
+                      <ChevronRight size={16} className="ml-2 transform transition-transform group-hover:translate-x-1" />
+                    </>
+                  )}
+                </Button>
+              </form>
+            </Form>
           </div>
         </div>
       </div>
