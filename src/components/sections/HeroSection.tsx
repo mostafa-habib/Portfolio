@@ -56,7 +56,12 @@ const HeroSection = () => {
                 variant="outline" 
                 className="border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 py-6"
               >
+                <a 
+                href="/assets/Mostafa_Habib_Resume.pdf" 
+                download="Mostafa_Habib_Resume.pdf" 
+              >
                 Download Resume
+              </a>
               </Button>
             </div>
           </div>
