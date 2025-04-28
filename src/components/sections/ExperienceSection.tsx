@@ -55,14 +55,14 @@ const education: Education[] = [
 const TimelineItem = ({ item }: { item: TimelineItemType }) => {
   return (
     <div className="relative pl-8 pb-8">
-      <div className="absolute top-0 left-0 h-full w-0.5 bg-gray-800"></div>
-      <div className="absolute top-0 left-0 w-8 h-8 -translate-x-1/2 flex items-center justify-center rounded-full bg-gray-900 border border-gray-800 text-white">
+      <div className="absolute top-0 left-0 h-full w-0.5 bg-gray-300 dark:bg-gray-800"></div>
+      <div className="absolute top-0 left-0 w-8 h-8 -translate-x-1/2 flex items-center justify-center rounded-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-800 text-portfolio-highlight">
         {item.type === "work" ? <Briefcase size={16} className="text-portfolio-highlight" /> : <GraduationCap size={16} className="text-portfolio-highlight" />}
       </div>
-      <div className="bg-gray-900/30 backdrop-blur-sm border border-gray-800 rounded-lg shadow-md p-6 hover:border-portfolio-highlight transition-colors">
+      <div className="bg-white/80 dark:bg-gray-900/30 backdrop-blur-sm border border-gray-200 dark:border-gray-800 rounded-lg shadow-md p-6 hover:border-portfolio-highlight transition-colors">
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">
-          <h3 className="text-xl font-bold text-white">{item.title}</h3>
-          <span className="text-sm bg-gray-800 text-portfolio-highlight px-3 py-1 rounded-full mt-2 sm:mt-0 border border-gray-700">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white">{item.title}</h3>
+          <span className="text-sm bg-gray-100 dark:bg-gray-800 text-portfolio-highlight px-3 py-1 rounded-full mt-2 sm:mt-0 border border-gray-200 dark:border-gray-700">
             {item.period}
           </span>
         </div>
@@ -71,7 +71,7 @@ const TimelineItem = ({ item }: { item: TimelineItemType }) => {
         </p>
         <ul className="list-disc pl-5 space-y-2">
           {item.description.map((desc, index) => (
-            <li key={index} className="text-gray-400">{desc}</li>
+            <li key={index} className="text-gray-600 dark:text-gray-400">{desc}</li>
           ))}
         </ul>
       </div>
@@ -81,20 +81,20 @@ const TimelineItem = ({ item }: { item: TimelineItemType }) => {
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-20 bg-portfolio-dark relative">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop')] opacity-[0.03] bg-fixed"></div>
+    <section id="experience" className="py-20 bg-gray-50 dark:bg-portfolio-dark relative">
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop')] opacity-[0.02] dark:opacity-[0.03] bg-fixed"></div>
       <div className="section-container relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Experience & Education</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">Experience & Education</h2>
           <div className="w-20 h-1 bg-portfolio-highlight mx-auto mb-6"></div>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             My professional journey and academic background that have shaped my skills and expertise.
           </p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
-            <h3 className="text-2xl font-bold mb-6 flex items-center text-white">
+            <h3 className="text-2xl font-bold mb-6 flex items-center text-gray-900 dark:text-white">
               <Briefcase className="mr-2 text-portfolio-highlight" /> Work Experience
             </h3>
             
@@ -106,7 +106,7 @@ const ExperienceSection = () => {
           </div>
           
           <div>
-            <h3 className="text-2xl font-bold mb-6 flex items-center text-white">
+            <h3 className="text-2xl font-bold mb-6 flex items-center text-gray-900 dark:text-white">
               <GraduationCap className="mr-2 text-portfolio-highlight" /> Education
             </h3>
             

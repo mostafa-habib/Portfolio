@@ -85,12 +85,12 @@ const HeroSection = () => {
               
               <div className="floating-card absolute w-20 h-20 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 animate-float"
                    style={{ top: '20%', right: '10%', animationDelay: '0.6s' }}>
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind" />
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" className="dark:invert" alt="Tailwind" />
               </div>
               
               <div className="floating-card absolute w-20 h-20 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 animate-float"
                    style={{ bottom: '20%', right: '20%', animationDelay: '0.8s' }}>
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" />
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" className="dark:invert" alt="Next.js" />
               </div>
             </div>
           </div>
