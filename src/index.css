@@ -46,16 +46,16 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 0 0% 5%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 0 0% 7%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 0 0% 7%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 210 100% 65%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -92,7 +92,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-portfolio-dark text-gray-200;
   }
 
   .section-container {
@@ -100,10 +100,29 @@
   }
   
   .project-card {
-    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+    @apply transition-all duration-300 bg-portfolio-darkBg border border-gray-800 hover:border-portfolio-highlight hover:-translate-y-2 hover:shadow-xl hover:shadow-portfolio-highlight/10;
   }
   
   .skill-item {
-    @apply flex items-center gap-2 bg-portfolio-lightGray rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 hover:bg-portfolio-blue hover:text-white;
+    @apply flex items-center gap-2 bg-gray-800/60 rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border border-gray-700 hover:bg-gray-800 hover:border-portfolio-highlight;
+  }
+
+  .glass-effect {
+    @apply bg-gray-900/30 backdrop-blur-lg border border-gray-800;
+  }
+
+  .sphere-container {
+    @apply relative w-full h-[600px] flex items-center justify-center overflow-hidden;
+  }
+
+  .sphere {
+    @apply w-[500px] h-[500px] relative animate-rotate-sphere;
+    transform-style: preserve-3d;
+  }
+
+  .sphere-item {
+    @apply absolute w-20 h-20 rounded-md overflow-hidden;
+    backface-visibility: hidden;
+    transform-origin: center;
   }
 }

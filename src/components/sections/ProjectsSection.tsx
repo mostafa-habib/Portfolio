@@ -62,12 +62,13 @@ const projects = [
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-20 bg-portfolio-lightGray">
-      <div className="section-container">
+    <section id="projects" className="py-20 bg-portfolio-dark relative overflow-hidden">
+      <div className="absolute top-1/4 left-0 w-full h-96 bg-portfolio-darkBlue/5 -skew-y-6"></div>
+      <div className="section-container relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">My Projects</h2>
-          <div className="w-20 h-1 bg-portfolio-blue mx-auto mb-6"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">My Projects</h2>
+          <div className="w-20 h-1 bg-portfolio-highlight mx-auto mb-6"></div>
+          <p className="text-gray-400 max-w-2xl mx-auto">
             Here are some of the projects I've worked on. These showcase my skills in frontend development
             and my ability to create responsive, user-friendly web applications.
           </p>
@@ -75,7 +76,7 @@ const ProjectsSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
-            <Card key={project.id} className="project-card overflow-hidden">
+            <Card key={project.id} className="project-card overflow-hidden bg-gray-900/30 backdrop-blur-sm">
               <div className="h-48 overflow-hidden">
                 <img 
                   src={project.image} 
@@ -84,13 +85,13 @@ const ProjectsSection = () => {
                 />
               </div>
               
-              <CardHeader>
-                <CardTitle>{project.title}</CardTitle>
+              <CardHeader className="border-b border-gray-800">
+                <CardTitle className="text-white">{project.title}</CardTitle>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {project.tags.map((tag, index) => (
                     <span 
                       key={index} 
-                      className="text-xs bg-portfolio-softBlue text-portfolio-darkGray px-2 py-1 rounded-full"
+                      className="text-xs bg-gray-800 text-portfolio-highlight px-2 py-1 rounded-full border border-gray-700"
                     >
                       {tag}
                     </span>
@@ -98,8 +99,8 @@ const ProjectsSection = () => {
                 </div>
               </CardHeader>
               
-              <CardContent>
-                <CardDescription className="text-gray-600">
+              <CardContent className="pt-4">
+                <CardDescription className="text-gray-400">
                   {project.description}
                 </CardDescription>
               </CardContent>
@@ -110,7 +111,7 @@ const ProjectsSection = () => {
                     href={project.codeLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-portfolio-blue hover:underline"
+                    className="flex items-center text-portfolio-highlight hover:text-blue-400"
                   >
                     <Github size={16} className="mr-1" />
                     Code
@@ -122,7 +123,7 @@ const ProjectsSection = () => {
                     href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-portfolio-blue hover:underline"
+                    className="flex items-center text-portfolio-highlight hover:text-blue-400"
                   >
                     <ExternalLink size={16} className="mr-1" />
                     Live Demo
@@ -130,7 +131,7 @@ const ProjectsSection = () => {
                 )}
                 
                 {!project.codeLink && !project.liveLink && (
-                  <span className="text-gray-500 text-sm italic">Private Project</span>
+                  <span className="text-gray-600 text-sm italic">Private Project</span>
                 )}
               </CardFooter>
             </Card>
@@ -138,8 +139,8 @@ const ProjectsSection = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <Button className="bg-portfolio-blue hover:bg-blue-600 inline-flex items-center gap-2">
-            See More Projects <ArrowRight size={16} />
+          <Button className="bg-gray-900 hover:bg-gray-800 text-white border border-gray-700 inline-flex items-center gap-2 group">
+            See More Projects <ArrowRight size={16} className="transform transition-transform group-hover:translate-x-1" />
           </Button>
         </div>
       </div>

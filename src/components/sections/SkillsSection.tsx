@@ -12,64 +12,77 @@ const otherSkills = [
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-20 bg-white">
-      <div className="section-container">
+    <section id="skills" className="py-20 bg-portfolio-darkBg relative">
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-portfolio-highlight/5 rounded-bl-full"></div>
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-portfolio-darkBlue/5 rounded-tr-full"></div>
+      
+      <div className="section-container relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">My Skills</h2>
-          <div className="w-20 h-1 bg-portfolio-blue mx-auto mb-6"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">My Skills</h2>
+          <div className="w-20 h-1 bg-portfolio-highlight mx-auto mb-6"></div>
+          <p className="text-gray-400 max-w-2xl mx-auto">
             I've acquired a diverse set of skills throughout my career,
             focusing primarily on frontend development technologies.
           </p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <Card className="shadow-lg">
+          <Card className="bg-gray-900/30 border-gray-800 backdrop-blur-sm shadow-lg">
             <CardContent className="pt-6">
-              <h3 className="text-xl font-bold mb-6">Frontend Development</h3>
+              <h3 className="text-xl font-bold mb-6 text-white">Frontend Development</h3>
               <div className="space-y-6">
                 <div>
                   <div className="flex justify-between mb-1">
-                    <span className="font-medium">React.js</span>
-                    <span>90%</span>
+                    <span className="font-medium text-gray-300">React.js</span>
+                    <span className="text-portfolio-highlight">90%</span>
                   </div>
-                  <Progress value={90} className="h-2" />
+                  <Progress value={90} className="h-2 bg-gray-800">
+                    <div className="h-full bg-portfolio-highlight rounded-full"></div>
+                  </Progress>
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <span className="font-medium">Next.js</span>
-                    <span>85%</span>
+                    <span className="font-medium text-gray-300">Next.js</span>
+                    <span className="text-portfolio-highlight">85%</span>
                   </div>
-                  <Progress value={85} className="h-2" />
+                  <Progress value={85} className="h-2 bg-gray-800">
+                    <div className="h-full bg-portfolio-highlight rounded-full"></div>
+                  </Progress>
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <span className="font-medium">Angular</span>
-                    <span>75%</span>
+                    <span className="font-medium text-gray-300">Angular</span>
+                    <span className="text-portfolio-highlight">75%</span>
                   </div>
-                  <Progress value={75} className="h-2" />
+                  <Progress value={75} className="h-2 bg-gray-800">
+                    <div className="h-full bg-portfolio-highlight rounded-full"></div>
+                  </Progress>
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <span className="font-medium">JavaScript/TypeScript</span>
-                    <span>90%</span>
+                    <span className="font-medium text-gray-300">JavaScript/TypeScript</span>
+                    <span className="text-portfolio-highlight">90%</span>
                   </div>
-                  <Progress value={90} className="h-2" />
+                  <Progress value={90} className="h-2 bg-gray-800">
+                    <div className="h-full bg-portfolio-highlight rounded-full"></div>
+                  </Progress>
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <span className="font-medium">CSS & UI Libraries</span>
-                    <span>85%</span>
+                    <span className="font-medium text-gray-300">CSS & UI Libraries</span>
+                    <span className="text-portfolio-highlight">85%</span>
                   </div>
-                  <Progress value={85} className="h-2" />
+                  <Progress value={85} className="h-2 bg-gray-800">
+                    <div className="h-full bg-portfolio-highlight rounded-full"></div>
+                  </Progress>
                 </div>
               </div>
               
               <div className="mt-8">
-                <h4 className="font-medium mb-4">All Frontend Skills</h4>
+                <h4 className="font-medium mb-4 text-gray-300">All Frontend Skills</h4>
                 <div className="flex flex-wrap gap-2">
                   {frontendSkills.map((skill, index) => (
-                    <span key={index} className="skill-item">
+                    <span key={index} className="skill-item text-gray-300">
                       {skill}
                     </span>
                   ))}
@@ -78,52 +91,62 @@ const SkillsSection = () => {
             </CardContent>
           </Card>
           
-          <Card className="shadow-lg">
+          <Card className="bg-gray-900/30 border-gray-800 backdrop-blur-sm shadow-lg">
             <CardContent className="pt-6">
-              <h3 className="text-xl font-bold mb-6">Other Skills</h3>
+              <h3 className="text-xl font-bold mb-6 text-white">Other Skills</h3>
               <div className="space-y-6">
                 <div>
                   <div className="flex justify-between mb-1">
-                    <span className="font-medium">UI/UX Design</span>
-                    <span>80%</span>
+                    <span className="font-medium text-gray-300">UI/UX Design</span>
+                    <span className="text-portfolio-highlight">80%</span>
                   </div>
-                  <Progress value={80} className="h-2" />
+                  <Progress value={80} className="h-2 bg-gray-800">
+                    <div className="h-full bg-portfolio-highlight rounded-full"></div>
+                  </Progress>
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <span className="font-medium">Testing</span>
-                    <span>75%</span>
+                    <span className="font-medium text-gray-300">Testing</span>
+                    <span className="text-portfolio-highlight">75%</span>
                   </div>
-                  <Progress value={75} className="h-2" />
+                  <Progress value={75} className="h-2 bg-gray-800">
+                    <div className="h-full bg-portfolio-highlight rounded-full"></div>
+                  </Progress>
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <span className="font-medium">Backend Basics</span>
-                    <span>70%</span>
+                    <span className="font-medium text-gray-300">Backend Basics</span>
+                    <span className="text-portfolio-highlight">70%</span>
                   </div>
-                  <Progress value={70} className="h-2" />
+                  <Progress value={70} className="h-2 bg-gray-800">
+                    <div className="h-full bg-portfolio-highlight rounded-full"></div>
+                  </Progress>
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <span className="font-medium">Databases</span>
-                    <span>65%</span>
+                    <span className="font-medium text-gray-300">Databases</span>
+                    <span className="text-portfolio-highlight">65%</span>
                   </div>
-                  <Progress value={65} className="h-2" />
+                  <Progress value={65} className="h-2 bg-gray-800">
+                    <div className="h-full bg-portfolio-highlight rounded-full"></div>
+                  </Progress>
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <span className="font-medium">Performance Optimization</span>
-                    <span>80%</span>
+                    <span className="font-medium text-gray-300">Performance Optimization</span>
+                    <span className="text-portfolio-highlight">80%</span>
                   </div>
-                  <Progress value={80} className="h-2" />
+                  <Progress value={80} className="h-2 bg-gray-800">
+                    <div className="h-full bg-portfolio-highlight rounded-full"></div>
+                  </Progress>
                 </div>
               </div>
               
               <div className="mt-8">
-                <h4 className="font-medium mb-4">Additional Skills</h4>
+                <h4 className="font-medium mb-4 text-gray-300">Additional Skills</h4>
                 <div className="flex flex-wrap gap-2">
                   {otherSkills.map((skill, index) => (
-                    <span key={index} className="skill-item">
+                    <span key={index} className="skill-item text-gray-300">
                       {skill}
                     </span>
                   ))}
