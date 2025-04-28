@@ -1,7 +1,27 @@
 
 import { Briefcase, GraduationCap } from 'lucide-react';
 
-const experiences = [
+interface BaseTimelineItem {
+  id: number;
+  title: string;
+  period: string;
+  description: string[];
+  type: string;
+}
+
+interface WorkExperience extends BaseTimelineItem {
+  company: string;
+  type: "work";
+}
+
+interface Education extends BaseTimelineItem {
+  institution: string;
+  type: "education";
+}
+
+type TimelineItemType = WorkExperience | Education;
+
+const experiences: WorkExperience[] = [
   {
     id: 1,
     title: "Frontend Developer",
@@ -18,7 +38,7 @@ const experiences = [
   }
 ];
 
-const education = [
+const education: Education[] = [
   {
     id: 1,
     title: "Bachelor of Computer Science",
@@ -32,7 +52,7 @@ const education = [
   }
 ];
 
-const TimelineItem = ({ item }: { item: typeof experiences[0] | typeof education[0] }) => {
+const TimelineItem = ({ item }: { item: TimelineItemType }) => {
   return (
     <div className="relative pl-8 pb-8">
       <div className="absolute top-0 left-0 h-full w-0.5 bg-portfolio-blue" />
@@ -47,7 +67,7 @@ const TimelineItem = ({ item }: { item: typeof experiences[0] | typeof education
           </span>
         </div>
         <p className="text-portfolio-blue font-medium mb-4">
-          {item.company || item.institution}
+          {item.type === "work" ? item.company : item.institution}
         </p>
         <ul className="list-disc pl-5 space-y-2">
           {item.description.map((desc, index) => (
