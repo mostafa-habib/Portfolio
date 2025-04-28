@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Mail, Phone, Github, Linkedin, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -16,6 +15,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import emailjs from '@emailjs/browser';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -42,16 +42,31 @@ const ContactSection = () => {
 
   const onSubmit = (data: FormValues) => {
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Message sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
+
+    // EmailJS configuration
+    const serviceId = "service_m27dnid"; 
+    const templateId = "template_ku9vu7l"; 
+    const publicKey = "rER_objRcrPKsafP0";
+
+    emailjs
+      .send(serviceId, templateId, data, publicKey)
+      .then(() => {
+        setIsSubmitting(false);
+        toast({
+          title: "Message sent!",
+          description: "Thanks for reaching out. I'll get back to you soon.",
+        });
+        form.reset();
+      })
+      .catch((error) => {
+        setIsSubmitting(false);
+        toast({
+          title: "Error",
+          description: "Failed to send the message. Please try again later.",
+          variant: "destructive",
+        });
+        console.error("EmailJS Error:", error);
       });
-      form.reset();
-    }, 1500);
   };
 
   return (
