@@ -99,8 +99,13 @@ const Navbar = () => {
             variant="outline" 
             className="border-portfolio-highlight text-portfolio-highlight hover:bg-portfolio-highlight hover:text-white flex items-center gap-2"
           >
+             <a 
+                href="/assets/Mostafa_Habib_Resume.pdf" 
+                download="Mostafa_Habib_Resume.pdf" 
+              >
+                 Resume
+              </a>
             <Download size={16} />
-            Resume
           </Button>
         </div>
 
@@ -146,7 +151,12 @@ const Navbar = () => {
                 className="w-full border-portfolio-highlight text-portfolio-highlight hover:bg-portfolio-highlight hover:text-white flex items-center justify-center gap-2"
               >
                 <Download size={16} />
+                <a 
+                href="/assets/Mostafa_Habib_Resume.pdf" 
+                download="Mostafa_Habib_Resume.pdf" 
+              >
                 Download Resume
+              </a>
               </Button>
             </div>
           </div>

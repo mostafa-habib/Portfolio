@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { ArrowRight, ExternalLink, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -21,67 +20,91 @@ const projects: Project[] = [
     id: 1,
     title: "Fawry Payday",
     description: "An HR automation platform for managing employee payroll, attendance, and benefits.",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop",
+    image: "https://www.fawrypayday.com/assets/images/hero/hero-image.jpg",
     tags: ["React", "Redux", "Material UI"],
     categories: ["Professional", "Frontend"],
     codeLink: null,
-    liveLink: null,
+    liveLink: "https://www.fawrypayday.com/",
   },
   {
     id: 2,
-    title: "Amazon Clone",
-    description: "E-commerce site similar to Amazon with product listings, cart functionality, and user authentication.",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
-    tags: ["React", "Firebase", "CSS"],
-    categories: ["Personal", "Full Stack"],
-    codeLink: "#",
-    liveLink: "#",
+    title: "POS System",
+    description: "A web-based point-of-sale system for managing sales, inventory, and customer data.",
+    image: "https://i.pinimg.com/736x/24/6e/17/246e17c437e6f132fe835cf8cd42e9ab.jpg",
+    tags: ["React", "Redux", "Material UI"],
+    categories: ["Professional", "Full Stack"],
+    codeLink: null,
+    liveLink: null,
   },
   {
     id: 3,
-    title: "Firegram",
-    description: "Instagram-like photo gallery app with image uploading, filtering, and social features.",
-    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&auto=format&fit=crop",
-    tags: ["React", "Firebase", "Tailwind CSS"],
-    categories: ["Personal", "Frontend"],
-    codeLink: "#",
-    liveLink: "#",
+    title: "Wakeb (Freelance)",
+    description: "Custom business solution for managing inventory and customer relationships.",
+    image: "./assets/wakeb.png",
+    tags: ["React", "TypeScript", "Bootstrap"],
+    categories: ["Freelance", "Frontend"],
+    codeLink: null,
+    liveLink: "https://wakeb.tech/",
   },
   {
     id: 4,
-    title: "NextJS Meetups",
-    description: "Browse and register for local community meetups with location-based filtering.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
-    tags: ["Next.js", "MongoDB", "Tailwind CSS"],
-    categories: ["Personal", "Full Stack"],
-    codeLink: "#",
-    liveLink: "#",
+    title: "Grocery App (Freelance)",
+    description: "Mobile-responsive grocery shopping application with order tracking and delivery.",
+    image: "./../assets/grocery.png",
+    tags: ["React", "Redux", "Express.js"],
+    categories: ["Freelance", "Mobile"],
+    codeLink: "https://github.com/ahmedkhederali/Grocry",
+    liveLink: null,
   },
   {
     id: 5,
-    title: "Wakeb (Freelance)",
-    description: "Custom business solution for managing inventory and customer relationships.",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&auto=format&fit=crop",
-    tags: ["Angular", "TypeScript", "Bootstrap"],
-    categories: ["Freelance", "Frontend"],
-    codeLink: null,
-    liveLink: null,
+    title: "Amazon Clone",
+    description: "E-commerce site similar to Amazon with product listings, cart functionality, and user authentication.",
+    image: "https://mostafahabib86.netlify.app/static/media/amazon.93d435fe2ebbe323ed13.png",
+    tags: ["React", "Firebase", "CSS"],
+    categories: ["Personal", "Full Stack"],
+    codeLink: "https://github.com/mostafa-habib/Amazon-Clone",
+    liveLink: "https://amazon-cloonee.netlify.app/",
   },
   {
     id: 6,
-    title: "Grocery App (Freelance)",
-    description: "Mobile-responsive grocery shopping application with order tracking and delivery.",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
-    tags: ["React Native", "Redux", "Express.js"],
-    categories: ["Freelance", "Mobile"],
-    codeLink: null,
-    liveLink: null,
+    title: "COVID-19",
+    description: "Here you can show details about covid-19 and the ways to protect yourself and you will know the main symptoms.",
+    image: "https://mostafahabib86.netlify.app/static/media/Covid-19.d26341c2ca750d301c49.png",
+    tags: ["React", "Redux", "Express.js"],
+    categories: ["Personal", "Mobile"],
+    codeLink: "https://github.com/mostafa-habib/Covid-19",
+    liveLink: "https://fmcovid-19.netlify.app/",
   },
+  {
+    id: 7,
+    title: "Firegram",
+    description: "Instagram-like photo gallery app with image uploading, filtering, and social features.",
+    image: "https://mostafahabib86.netlify.app/static/media/firegram.b340747c38c4f424cad9.png",
+    tags: ["React", "Firebase", "Tailwind CSS"],
+    categories: ["Personal", "Frontend"],
+    codeLink: "https://github.com/mostafa-habib/Firegram",
+    liveLink: "https://mostafa-firgram.web.app/",
+  },
+  ,
+  {
+    id: 8,
+    title: "Fullstack Realtime Chat App",
+    description: "Fullstack Realtime Chat App that makes you sign-up or log in and chat with anyone.",
+    image: "./assets/chat.png",
+    tags: ["React", "TypeScript", "Bootstrap"],
+    categories: ["Personal", "Frontend"],
+    codeLink: "https://github.com/mostafa-habib/RealTime-Chat",
+    liveLink: "https://fmrealtime-chat.000webhostapp.com/",
+  }
 ];
 
 const ProjectsSection = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
+  const [visibleProjects, setVisibleProjects] = useState<Project[]>([]);
+  const [projectsToShow, setProjectsToShow] = useState(6);
+
   const categories = Array.from(new Set(projects.flatMap(project => project.categories)));
 
   useEffect(() => {
@@ -93,6 +116,14 @@ const ProjectsSection = () => {
       ));
     }
   }, [activeFilter]);
+
+  useEffect(() => {
+    setVisibleProjects(filteredProjects.slice(0, projectsToShow));
+  }, [filteredProjects, projectsToShow]);
+
+  const handleLoadMore = () => {
+    setProjectsToShow(prev => prev + 6); // Load 6 more projects
+  };
 
   return (
     <section id="projects" className="py-20 bg-gray-50 dark:bg-portfolio-dark relative overflow-hidden">
@@ -114,7 +145,7 @@ const ProjectsSection = () => {
         />
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+          {visibleProjects.map((project) => (
             <Card 
               key={project.id} 
               className="project-card overflow-hidden bg-white dark:bg-gray-900/30 backdrop-blur-sm transform transition-all duration-300 hover:-translate-y-2"
@@ -181,11 +212,16 @@ const ProjectsSection = () => {
           ))}
         </div>
         
-        <div className="mt-12 text-center">
-          <Button className="bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-700 inline-flex items-center gap-2 group">
-            See More Projects <ArrowRight size={16} className="transform transition-transform group-hover:translate-x-1" />
-          </Button>
-        </div>
+        {visibleProjects.length < filteredProjects.length && (
+          <div className="mt-12 text-center">
+            <Button 
+              onClick={handleLoadMore}
+              className="bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-700 inline-flex items-center gap-2 group"
+            >
+              See More Projects <ArrowRight size={16} className="transform transition-transform group-hover:translate-x-1" />
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
