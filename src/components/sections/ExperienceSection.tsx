@@ -28,11 +28,11 @@ const experiences: WorkExperience[] = [
     company: "Dirac Systems (Fawry)",
     period: "2022 - Present",
     description: [
-      "Developed ERP system with HR and Accounting modules using React.js and Redux.",
-      "Built a POS system for retail businesses with real-time inventory tracking.",
-      "Created multiple mobile and web applications using React Native and React.js.",
-      "Improved system performance by optimizing component rendering and network requests.",
-      "Implemented security features to prevent vulnerabilities like SQL Injection."
+      "Led the development of a new ERP system, starting with the HR Module (Payday – Fawry Business HR) and currently on the Accounting Module.",
+      "Implemented and maintained POS systems (Lychee POS) with a focus on usability and responsiveness.",
+      "Enhanced ERP features and fixed bugs across multiple modules, improving functionality, performance, and security.",
+      "Developed websites, mobile apps, and landing pages, taking projects from concept to deployment.",
+      "Advocated a mobile-first, user-friendly, and performance-optimized approach across all projects."
     ],
     type: "work"
   }

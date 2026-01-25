@@ -100,8 +100,8 @@ const Navbar = () => {
             className="border-portfolio-highlight text-portfolio-highlight hover:bg-portfolio-highlight hover:text-white flex items-center gap-2"
           >
              <a 
-                href="/assets/Mostafa_Habib_Resume.pdf" 
-                download="Mostafa_Habib_Resume.pdf" 
+                href="/assets/Mostafa_Habib(Frontend Developer).pdf" 
+                download="Mostafa_Habib(Frontend Developer).pdf" 
               >
                  Resume
               </a>
@@ -152,8 +152,8 @@ const Navbar = () => {
               >
                 <Download size={16} />
                 <a 
-                href="/assets/Mostafa_Habib_Resume.pdf" 
-                download="Mostafa_Habib_Resume.pdf" 
+                href="/assets/Mostafa_Habib(Frontend Developer).pdf" 
+                download="Mostafa_Habib(Frontend Developer).pdf" 
               >
                 Download Resume
               </a>

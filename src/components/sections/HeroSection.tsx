@@ -57,8 +57,8 @@ const HeroSection = () => {
                 className="border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 py-6"
               >
                 <a 
-                href="/assets/Mostafa_Habib_Resume.pdf" 
-                download="Mostafa_Habib_Resume.pdf" 
+                href="/assets/Mostafa_Habib(Frontend Developer).pdf" 
+                download="Mostafa_Habib(Frontend Developer).pdf" 
               >
                 Download Resume
               </a>
@@ -70,7 +70,7 @@ const HeroSection = () => {
             <div className="floating-cards-container relative w-[400px] h-[400px]">
               <div className="floating-card absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full overflow-hidden shadow-xl">
                 <img 
-                  src="/lovable-uploads/fcce9f3b-8fe9-4d31-9729-a8588cfd07cd.png"
+                  src="/assets/mostafa-habib.jfif"
                   alt="Mostafa Habib" 
                   className="w-full h-full object-cover"
                 />

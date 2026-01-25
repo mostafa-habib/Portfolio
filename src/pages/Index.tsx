@@ -1,4 +1,4 @@
-
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/sections/HeroSection";
@@ -8,7 +8,6 @@ import SkillsSection from "@/components/sections/SkillsSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import ContactSection from "@/components/sections/ContactSection";
 import ScrollToTop from "@/components/ScrollToTop";
-import { useEffect } from "react";
 
 const Index = () => {
   useEffect(() => {

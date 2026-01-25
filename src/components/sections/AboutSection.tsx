@@ -56,17 +56,16 @@ const AboutSection = () => {
           <div>
             <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Professional Summary</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-4">
-              I'm a passionate Frontend Developer with over 3 years of experience in designing and 
-              implementing user-facing features for websites and web applications. 
+              Frontend Developer with 3+ years of experience building production-ready web applications 
+              using React.js, Next.js, and Angular. I create responsive, accessible, and performance-optimized 
+              interfaces that delight users and solve real problems.
             </p>
             <p className="text-gray-600 dark:text-gray-400 mb-4">
-              My expertise lies in building responsive, interactive, and user-friendly web applications 
-              that provide exceptional user experiences. I have a strong foundation in modern JavaScript 
-              frameworks and libraries, particularly React.js, Next.js, and Angular.
+              I collaborate closely with designers, backend engineers, and product teams to turn complex 
+              requirements into intuitive user experiences.
             </p>
             <p className="text-gray-600 dark:text-gray-400">
-              I'm enthusiastic about continuous learning, teamwork, and solving real-world problems through 
-              technology. I pay close attention to detail and am committed to writing clean, maintainable code.
+              Passionate about clean code, continuous learning, and delivering products that make a real impact.
             </p>
           </div>
           
