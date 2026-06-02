@@ -100,8 +100,8 @@ const Navbar = () => {
             className="border-portfolio-highlight text-portfolio-highlight hover:bg-portfolio-highlight hover:text-white flex items-center gap-2"
           >
              <a 
-                href="/assets/Mostafa_Habib(Frontend Developer).pdf" 
-                download="Mostafa_Habib(Frontend Developer).pdf" 
+                href="/assets/Mostafa_Habib_Frontend_Developer_CV.pdf" 
+                download="Mostafa_Habib_Frontend_Developer_CV.pdf" 
               >
                  Resume
               </a>
