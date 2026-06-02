@@ -152,8 +152,8 @@ const Navbar = () => {
               >
                 <Download size={16} />
                 <a 
-                href="/assets/Mostafa_Habib(Frontend Developer).pdf" 
-                download="Mostafa_Habib(Frontend Developer).pdf" 
+                href="/assets/Mostafa_Habib_Frontend_Developer_CV.pdf" 
+                download="Mostafa_Habib_Frontend_Developer_CV.pdf" 
               >
                 Download Resume
               </a>
